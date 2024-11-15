@@ -1,78 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Welcome to COMCHICK SOLUTIONS</title>
-    <style>
-        /* Basic Reset */
-        body, h1 {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+import curses
+import time
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
+def text_animation(stdscr, text, delay=0.1):
+    curses.curs_set(0)  # Hide the cursor
+    stdscr.clear()
 
-        .container {
-            text-align: center;
-        }
+    rows, cols = stdscr.getmaxyx()
+    x = cols // 2 - len(text) // 2
+    y = rows // 2
 
-        /* Welcome Text Styling */
-        h1 {
-            font-size: 3rem;
-            color: #4CAF50;
-            opacity: 0;
-            animation: fadeIn 2s ease-out forwards;
-        }
+    for i in range(len(text) + 1):
+        stdscr.addstr(y, x, text[:i])
+        stdscr.refresh()
+        time.sleep(delay)
 
-        /* Animation for text */
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    stdscr.getch()  # Wait for a key press
 
-        .subtext {
-            font-size: 1.5rem;
-            color: #333;
-            opacity: 0;
-            animation: fadeInSubtext 3s ease-out 1s forwards;
-        }
+def main():
+    text = "Incoming message..."
+    curses.wrapper(text_animation, text)
 
-        @keyframes fadeInSubtext {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <h1>Welcome to My Website!</h1>
-        <p class="subtext">Learn and Serve.</p>
-    </div>
-
-</body>
-</html>
+if __name__ == "__main__":
+    main()
