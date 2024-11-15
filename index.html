@@ -1,24 +1,17 @@
-import curses
-import time
-
-def text_animation(stdscr, text, delay=0.1):
-    curses.curs_set(0)  # Hide the cursor
-    stdscr.clear()
-
-    rows, cols = stdscr.getmaxyx()
-    x = cols // 2 - len(text) // 2
-    y = rows // 2
-
-    for i in range(len(text) + 1):
-        stdscr.addstr(y, x, text[:i])
-        stdscr.refresh()
-        time.sleep(delay)
-
-    stdscr.getch()  # Wait for a key press
-
-def main():
-    text = "Incoming message..."
-    curses.wrapper(text_animation, text)
-
-if __name__ == "__main__":
-    main()
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incoming Text Animation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div id="messages" class="messages"></div>
+        <input type="text" id="textInput" placeholder="Type your message here..." />
+        <button id="sendButton">Send</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
