@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome to My Website</title>
+    <style>
+        /* Basic Reset */
+        body, h1 {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        /* Welcome Text Styling */
+        h1 {
+            font-size: 3rem;
+            color: #4CAF50;
+            opacity: 0;
+            animation: fadeIn 2s ease-out forwards;
+        }
+
+        /* Animation for text */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .subtext {
+            font-size: 1.5rem;
+            color: #333;
+            opacity: 0;
+            animation: fadeInSubtext 3s ease-out 1s forwards;
+        }
+
+        @keyframes fadeInSubtext {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Welcome to My Website!</h1>
+        <p class="subtext">We are glad to have you here.</p>
+    </div>
+
+</body>
+</html>
